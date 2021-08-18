@@ -50,6 +50,8 @@ class TestCtrl extends Controller
         $body = file_get_contents('php://input');
         $path = $_SERVER['REQUEST_URI'];
 
+
+        //阿里云oss服务器会将此处返回的信息原封不动地返回给上传文件的客户端
         return Direct::callback($fileinfo, $public_key, $body, $path);
     }
 }
