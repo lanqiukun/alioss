@@ -61,16 +61,8 @@ class Direct
     }
 
     //即使回调函数抛出异常，oss的文件也不会此被删除，但前端会看到oss反馈的回调错误信息
-    static public function callback()
+    static public function callback($fileinfo, $public_key, $body, $path)
     {
-        $fileinfo = request()->all();
-
-        $pubKey = file_get_contents(base64_decode($_SERVER['HTTP_X_OSS_PUB_KEY_URL']));
-
-        $body = file_get_contents('php://input');
-
-        $path = $_SERVER['REQUEST_URI'];
-
         $pos = strpos($path, '?');
 
         if ($pos === false)
@@ -80,7 +72,7 @@ class Direct
 
         $authorization = base64_decode($_SERVER['HTTP_AUTHORIZATION']);
 
-        if (openssl_verify($authStr, $authorization, $pubKey, OPENSSL_ALGO_MD5))
+        if (openssl_verify($authStr, $authorization, $public_key, OPENSSL_ALGO_MD5))
             return ['status' => 0, 'fileinfo' => $fileinfo];
         else
             return ['status' => 1, 'msg' => '签名失败'];
