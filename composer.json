@@ -15,7 +15,7 @@
 				"Lanqiukun\\Alioss\\AliossProvider"
 			],
             "aliases": {
-                "Uuid": "Lanqiukun\\Alioss\\Direct"
+                "Direct": "Lanqiukun\\Alioss\\Direct"
             }
         }
     }
