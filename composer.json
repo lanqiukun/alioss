@@ -8,15 +8,17 @@
             "email": "1543323033@qq.com"
         }
     ],
+    "autoload" : {
+		"psr-4" : {
+			"Lanqiukun\\Alioss\\": "src/"
+		}
+	},
     "require": {},
-    "extra": {
+        "extra": {
         "laravel": {
 			"providers": [
 				"Lanqiukun\\Alioss\\AliossProvider"
-			],
-            "aliases": {
-                "Direct": "Lanqiukun\\Alioss\\Direct"
-            }
+			]
         }
     }
 }
