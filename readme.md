@@ -59,5 +59,11 @@ class TestCtrl extends Controller
 }
 ```
 
+4. 客户端将sign_policy函数返回的参数 + 想要上传的文件 用 formdata的形式post到阿里云oss服务器，见postman示例：
+[postman - demo]()
+
 文档链接：
+
 阿里云oss：https://help.aliyun.com/product/31815.html
+
+
