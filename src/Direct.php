@@ -75,7 +75,7 @@ class Direct
         if (openssl_verify($authStr, $authorization, $public_key, OPENSSL_ALGO_MD5))
             return ['status' => 0, 'fileinfo' => $fileinfo];
         else
-            return ['status' => 1, 'msg' => '签名失败'];
+            return ['status' => 1, 'msg' => '未通过签名验证'];
         
     }
 
