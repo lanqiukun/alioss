@@ -4,10 +4,6 @@ namespace Lanqiukun\Alioss;
 
 class Direct 
 {
-    static public function debug()
-    {
-        return __CLASS__;
-    }
 
     //callback_url  示例值：'https://oss.gign.xyz/api/oss_callback  //客户端将文件直接post到阿里云服务器后触发的回调url
     //dir           示例值：'myservice/feedback/'                   //限制客户端上传文件的文件路径，没有相应的文件目录则创建
