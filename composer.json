@@ -1,0 +1,12 @@
+{
+    "name": "lanqiukun/alioss",
+    "description": "It's an Aliyun Oss Package for Laravel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edison",
+            "email": "1543323033@qq.com"
+        }
+    ],
+    "require": {}
+}
