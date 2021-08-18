@@ -59,7 +59,21 @@ class TestCtrl extends Controller
 }
 ```
 
-4. 客户端将sign_policy函数返回的参数 + 想要上传的文件 用 formdata的形式post到阿里云oss服务器，见postman示例：
+4. 上传文件
+  （1） sign_policy函数返回如下数据
+    ```
+    {
+        "accessid": "aaaaaaaaaaaa",
+        "host": "https://bbbbbbbb.oss-cn-guangzhou.aliyuncs.com",
+        "policy": "eyJleHcccaW9uIjoiMjAyMS0wOC0xOFQw0OVoiLCJjb25kaXRpb25zIjpbWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwyMDQ4MDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInF3ZXJcL2FzZGYiXV19",
+        "signature": "iEZxydddvExJX/dddtdER8=",
+        "expire": 1629271729,
+        "callback": "eyJjYWxsYmFjddd0dHBzOlwvXC90ZXN0LnBhY2thZ2VzLmxvd2IuddcL3Rlc3RfY2FsbGJhY2siLCJjYWxsYmFja0JvZHkiOiJmaWxlbmFtZT0ke29iamVjdH0mc2l6ZT0ke3NpemV9Jm1pbWVUeXBlPSR7bWdmhlaWccltYWdlSW5mby5oZWlnaHR9JndpZHRoPSR7aW1hZ2VJbmZvLndpZHRofSIsImNhbGxiYWNrQm9keVR5cGUiOiJhcHBsaWNhdGlvblwveC13d3ctZm9ybS11cmxlbmNvZGVkIn0=",
+        "dir": "qwer/asdf",
+        "random_name": "ba21a10766c97e7c7b073af7670b2cb8"
+    }
+    ```
+    (2)客户端将sign_policy函数返回的参数 + 想要上传的文件 用 formdata的形式post到阿里云oss服务器，见postman示例：
 [postman - demo]()
 
 文档链接：
