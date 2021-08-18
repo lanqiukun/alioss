@@ -3,4 +3,6 @@
 
 ### 使用方法
 
+```
 composer require lanqiukun/alioss
+```
