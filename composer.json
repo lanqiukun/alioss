@@ -8,5 +8,15 @@
             "email": "1543323033@qq.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "extra": {
+        "laravel": {
+			"providers": [
+				"Lanqiukun\\Alioss\\AliossProvider"
+			],
+            "aliases": {
+                "Uuid": "Lanqiukun\\Alioss\\Direct"
+            }
+        }
+    }
 }
