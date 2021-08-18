@@ -32,6 +32,8 @@ class TestCtrl extends Controller
 
     static public function test()
     {
+        //业务条件检查，例如权限是否满足，是否达到最大文件上传数量限制等。。。
+
         $callback_url = env('APP_URL') . '/api/test_callback';  //设置oss上传成功的回调，回调返回的内容将原封不动地返回客户端
         $dir = 'qwer/asdf';         //限制客户端只能将文件上传到oss的qwer/asdf目录下
         $max_body_size = 2000;      //限制客户端最大上传文件大小2000KB
@@ -55,5 +57,4 @@ class TestCtrl extends Controller
         return Direct::callback($fileinfo, $public_key, $body, $path);
     }
 }
-
 ```
