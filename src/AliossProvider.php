@@ -6,26 +6,27 @@ use Illuminate\Support\ServiceProvider;
 
 class AliossProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
+    protected $defer = true;
+    
     public function register()
     {
-        //
+        $this->app->singleton(Direct::class, function(){
+            return new Direct;
+        });
+
+        $this->app->alias(Direct::class, 'direct');
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
+
     public function boot()
     {
-        //
-        $this->app->singleton("alioss_direct",function (){
-            return new Direct();
-        });
+
+
+
+    }
+
+    public function provides()
+    {
+        return [Direct::class, 'direct'];
     }
 }
