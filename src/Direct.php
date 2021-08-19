@@ -13,9 +13,9 @@ class Direct
     static public function sign_policy($callback_url, $dir, $max_body_size, $expire = 300, $min_body_size = 0)
     {
 
-        $AccessKeyID = env('ALIYUN_ACCESS_KEY_ID');          // 请填写您的AccessKeyId。
+        $AccessKeyID = env('ALIYUN_ACCESS_KEY_ID');             // 请填写您的AccessKeyId。
         $AccessKeySecret = env('ALIYUN_ACCESS_KEY_SECRET');     // 请填写您的AccessKeySecret。
-        $BucketHostName = env('ALIYUN_BUCKET_HOSTNAME');               // Bucket 域名
+        $BucketHostName = env('ALIYUN_BUCKET_HOSTNAME');        // Bucket 域名
         $callback_param = [
             'callbackUrl' => $callback_url,         
             'callbackBody' => 'filename=${object}&size=${size}&mimeType=${mimeType}&height=${imageInfo.height}&width=${imageInfo.width}',
