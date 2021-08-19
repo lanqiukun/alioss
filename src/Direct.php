@@ -48,6 +48,7 @@ class Direct
         $response['expire'] = $deadline;
         $response['callback'] = base64_encode(json_encode($callback_param));
         $response['key'] = $dir . '/' . bin2hex(openssl_random_pseudo_bytes(16));
+        $response['success_action_status'] = 200;
 
         return $response;
     }
