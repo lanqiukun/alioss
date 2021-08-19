@@ -22,8 +22,8 @@ class Direct
             'callbackBodyType' => "application/x-www-form-urlencoded"
         ];
         
-
-        $deadline = date('c', time() + $expire);
+        $deadline_ts = time() + $expire;
+        $deadline = date('c', $deadline_ts);
         $expiration = explode('+', $deadline)[0] . 'Z';
 
 
@@ -41,14 +41,14 @@ class Direct
         $signature = base64_encode(hash_hmac('sha1', $base64_policy, $AccessKeySecret, true));
 
         $response = [];
-        $response['OSSAccessKeyId'] = $AccessKeyID;
         $response['host'] = $BucketHostName;
+        $response['OSSAccessKeyId'] = $AccessKeyID;
         $response['policy'] = $base64_policy;
         $response['signature'] = $signature;
-        $response['expire'] = $deadline;
         $response['callback'] = base64_encode(json_encode($callback_param));
         $response['key'] = $dir . '/' . bin2hex(openssl_random_pseudo_bytes(16));
         $response['success_action_status'] = 200;
+        $response['expire'] = $deadline_ts;
 
         return $response;
     }
