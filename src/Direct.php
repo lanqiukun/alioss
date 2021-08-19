@@ -41,14 +41,13 @@ class Direct
         $signature = base64_encode(hash_hmac('sha1', $base64_policy, $AccessKeySecret, true));
 
         $response = [];
-        $response['accessid'] = $AccessKeyID;
+        $response['OSSAccessKeyId'] = $AccessKeyID;
         $response['host'] = $BucketHostName;
         $response['policy'] = $base64_policy;
         $response['signature'] = $signature;
         $response['expire'] = $deadline;
         $response['callback'] = base64_encode(json_encode($callback_param));
-        $response['dir'] = $dir;
-        $response['random_name'] = bin2hex(openssl_random_pseudo_bytes(16));
+        $response['key'] = $dir . '/' . bin2hex(openssl_random_pseudo_bytes(16));
 
         return $response;
     }
