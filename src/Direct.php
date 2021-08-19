@@ -23,8 +23,8 @@ class Direct
         ];
         
         $deadline_ts = time() + $expire;
-        $deadline = date('c', $deadline_ts);
-        $expiration = explode('+', $deadline)[0] . 'Z';
+        $deadline_iso_8601 = date('c', $deadline_ts);
+        $expiration = explode('+', $deadline_iso_8601)[0] . 'Z';
 
 
         //客户端上传文件的限制
