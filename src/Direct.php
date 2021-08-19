@@ -13,24 +13,18 @@ class Direct
     static public function sign_policy($callback_url, $dir, $max_body_size, $expire = 300, $min_body_size = 0)
     {
 
-        $id = env('ALIOSS_ACCESS_KEY_ID');          // 请填写您的AccessKeyId。
-        $key = env('ALIOSS_ACCESS_KEY_SECRET');     // 请填写您的AccessKeySecret。
-        $host = env('ALIOSS_BUCKET');               // Bucket 域名
+        $AccessKeyID = env('ALIYUN_ACCESS_KEY_ID');          // 请填写您的AccessKeyId。
+        $AccessKeySecret = env('ALIYUN_ACCESS_KEY_SECRET');     // 请填写您的AccessKeySecret。
+        $BucketHostName = env('ALIYUN_BUCKET_HOSTNAME');               // Bucket 域名
         $callback_param = [
             'callbackUrl' => $callback_url,         
             'callbackBody' => 'filename=${object}&size=${size}&mimeType=${mimeType}&height=${imageInfo.height}&width=${imageInfo.width}',
             'callbackBodyType' => "application/x-www-form-urlencoded"
         ];
+        
 
-        function gmt_iso8601($time)
-        {
-            $mydatetime = new \DateTime(date("c", $time));
-            $expiration = $mydatetime->format(\DateTime::ISO8601);
-            return substr($expiration, 0, strpos($expiration, '+')) . "Z";
-        }
-
-        $end = time() + $expire;
-        $expiration = gmt_iso8601($end);
+        $deadline = date('c', time() + $expire);
+        $expiration = explode('+', $deadline)[0] . 'Z';
 
 
         //客户端上传文件的限制
@@ -44,15 +38,14 @@ class Direct
 
         $policy = json_encode(['expiration' => $expiration, 'conditions' => $conditions]);
         $base64_policy = base64_encode($policy);
-        $string_to_sign = $base64_policy;
-        $signature = base64_encode(hash_hmac('sha1', $string_to_sign, $key, true));
+        $signature = base64_encode(hash_hmac('sha1', $base64_policy, $AccessKeySecret, true));
 
         $response = [];
-        $response['accessid'] = $id;
-        $response['host'] = $host;
+        $response['accessid'] = $AccessKeyID;
+        $response['host'] = $BucketHostName;
         $response['policy'] = $base64_policy;
         $response['signature'] = $signature;
-        $response['expire'] = $end;
+        $response['expire'] = $deadline;
         $response['callback'] = base64_encode(json_encode($callback_param));
         $response['dir'] = $dir;
         $response['random_name'] = bin2hex(openssl_random_pseudo_bytes(16));
