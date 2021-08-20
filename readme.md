@@ -14,9 +14,9 @@ composer require lanqiukun/alioss
 
 2. 在laravel的 *.env* 文件中配置好阿里云oss的参数，例如
 ```
-ALIOSS_ACCESS_KEY_ID=YOUR_ALIOSS_ACCESS_KEY_ID
-ALIOSS_ACCESS_KEY_SECRET=YOUR_ALIOSS_ACCESS_KEY_SECRET
-ALIOSS_BUCKET=https://yourbucketname.region.aliyuncs.com
+ALIYUN_ACCESS_KEY_ID=YOUR_ALIOSS_ACCESS_KEY_ID
+ALIYUN_ACCESS_KEY_SECRET=YOUR_ALIOSS_ACCESS_KEY_SECRET
+ALIYUN_BUCKET_HOSTNAME=https://yourbucketname.region.aliyuncs.com
 ```
 
 3. 业务逻辑中用如下方法使用Direct类
