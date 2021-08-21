@@ -10,7 +10,7 @@ class Direct
     //max_body_size 示例值：1024 * 20  单位KB                       //上传文件最大字节数 20MB
     //expire        示例值：120        单位秒                       //policy在签发后多少秒内有效，在有效期内的policy可以重复使用
     //min_body_size 示例值：0          单位KB                       //上传文件最小字节数
-    static public function sign_policy($callback_url, $dir, $max_body_size, $expire = 300, $min_body_size = 0)
+    static public function sign_policy($callback_url, $dir, $max_body_size, $params, $expire = 300, $min_body_size = 0)
     {
 
         $AccessKeyID = env('ALIYUN_ACCESS_KEY_ID');             // 请填写您的AccessKeyId。
@@ -26,6 +26,9 @@ class Direct
         $deadline_iso_8601 = date('c', $deadline_ts);
         $expiration = explode('+', $deadline_iso_8601)[0] . 'Z';
 
+        $params_uri_format = empty($callback_param['callbackBody']) ? http_build_query($params) : '&' . http_build_query($params);
+        
+        $callback_param['callbackBody'] .= $params_uri_format;
 
         //客户端上传文件的限制
         //content-length-range  文件大小方面的限制
