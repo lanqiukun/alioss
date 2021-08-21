@@ -14,7 +14,7 @@
 		}
 	},
     "require": {},
-        "extra": {
+    "extra": {
         "laravel": {
 			"providers": [
 				"Lanqiukun\\Alioss\\AliossProvider"
