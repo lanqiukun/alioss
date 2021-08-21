@@ -12,13 +12,6 @@
 		"psr-4" : {
 			"Lanqiukun\\Alioss\\": "src"
 		}
-	},
-    "require": {},
-    "extra": {
-        "laravel": {
-			"providers": [
-				"Lanqiukun\\Alioss\\AliossProvider"
-			]
-        }
-    }
+	}
+
 }
