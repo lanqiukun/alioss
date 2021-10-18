@@ -8,6 +8,7 @@ class Direct
     //callback_url  示例值：'https://oss.gign.xyz/api/oss_callback  //客户端将文件直接post到阿里云服务器后触发的回调url
     //dir           示例值：'myservice/feedback/'                   //限制客户端上传文件的文件路径，没有相应的文件目录则创建
     //max_body_size 示例值：1024 * 20  单位KB                       //上传文件最大字节数 20MB
+    //params        实例值：['name' => 'Edison', 'age' => 25]       //额外参数，拼接在callback_param的callbackBody或callbackUrl即可
     //expire        示例值：120        单位秒                       //policy在签发后多少秒内有效，在有效期内的policy可以重复使用
     //min_body_size 示例值：0          单位KB                       //上传文件最小字节数
     static public function sign_policy($callback_url, $dir, $max_body_size, $params, $expire = 300, $min_body_size = 0)
