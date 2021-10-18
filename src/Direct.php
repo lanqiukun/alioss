@@ -68,6 +68,7 @@ class Direct
 
         $authorization = base64_decode($_SERVER['HTTP_AUTHORIZATION']);
 
+        //这一步是为了验证该回调请求确实来自阿里云
         if (openssl_verify($authStr, $authorization, $public_key, OPENSSL_ALGO_MD5))
             return ['status' => 0, 'fileinfo' => $fileinfo];
         else
