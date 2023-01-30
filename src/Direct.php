@@ -50,7 +50,7 @@ class Direct
         $response['policy'] = $base64_policy;
         $response['signature'] = $signature;
         $response['callback'] = base64_encode(json_encode($callback_param));
-        $response['key'] = $dir . '/' . date('Y-m-d_H-i-s_') . bin2hex(openssl_random_pseudo_bytes(16));
+        $response['key'] = $dir . '/' . time() . '__' . date('Y-m-d_H-i-s__') . bin2hex(openssl_random_pseudo_bytes(16));
         $response['success_action_status'] = 200;
         $response['expire'] = $deadline_ts;
 
